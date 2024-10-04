@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키 이벤트</title>
+</head>
+<body>
+    <div>
+      <input type="text" name="name" placeholder="이름을 입력하세요.">
+      <p id="result"></p>
+    </div>
+</body>
+<script>
+    const input = document.querySelector("input[name='name']");
+    const p = document.querySelector("#result");
+
+    // 사용자가 입력한 이름을 일벽하면
+    // p태그에 실시간으로 보여주기
+    input.addEventListener("keyup", (e)=>{
+      if(e.key==="Enter"){
+        p.innerText = e.target.value;
+      }
+    })
+
+</script>
+</html>

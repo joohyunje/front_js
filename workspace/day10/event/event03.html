@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클릭 이벤트3</title>
+  <style>
+    input {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <label><input type="text" name="id" placeholder="아이디를 입력하세요."></label>
+    <p id="id-result"></p>
+    <label><input type="text" name="password" placeholder="비밀번호를 입력하세요"></label>
+    <p id="password-result"></p>
+    <button type="button">완료</button>
+  </form>
+</body>
+<script>
+  const form = document.querySelector("form");
+  const button = document.querySelector("button");
+  const id = document.querySelector("input[name='id']");
+  const password = document.querySelector("input[name='password']");
+  const idResult = document.querySelector("#id-result");
+  const passwordResult = document.querySelector("#password-result");
+
+  globalThis.flag = new Array(false, false);
+
+  // 아이디와 비밀번호 유효성 검사
+  // 버튼을 누르면 이벤트 리스너를 사용해서 클릭에 반응하게 한다.
+  id.addEventListener("focus", () => {
+    id.style.border = "solid 1px orange";
+  })
+  
+  id.addEventListener("blur", (e) => {
+    id.style.border = "";
+    const target = e.target;
+    if(!target.value){
+      idResult.innerText = "아이디를 입력하세요.";
+      idResult.style.color = "red";
+      return;
+    }
+    idResult.innerText = "멋진 아이디네요😁";
+    idResult.style.color = "blue";
+    globalThis.flag[0] = true;
+  })
+  
+  password.addEventListener("focus", () => {
+    password.style.border = "solid 1px orange";
+  })
+  
+  password.addEventListener("blur", (e) => {
+    password.style.border = "";
+    const target = e.target;
+    if(!target.value){
+      passwordResult.innerText = "비밀번호를 입력하세요.";
+      passwordResult.style.color = "red";
+      return;
+    }
+    passwordResult.innerText = "검증 완료!";
+    passwordResult.style.color = "blue";
+    globalThis.flag[1] = true;
+  })
+
+  button.addEventListener("click", () => {
+    if(globalThis.flag.filter(check => check).length != 2){
+      alert("정보를 입력하세요!")
+      return;
+    }
+    form.submit();
+  })
+
+</script>
+</html>

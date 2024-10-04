@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크박스 동의</title>
+</head>
+<body>
+    <form action="" name="myForm">
+        <div>
+            <label>전체 동의
+                <input type="checkbox" name="all">
+            </label>
+        </div>
+        <div> 
+            <label>서비스 이용약관 동의
+                <input type="checkbox" name="term">
+            </label>
+        </div>
+        <div>
+            <label>광고 수신동의
+                <input type="checkbox" name="term">
+            </label>
+        </div>
+        <div>
+            <label>개인 정ㄷ 이용약관 동의
+                <input type="checkbox" name="term">
+            </label>
+        </div>
+    </form>
+</body>
+<script>
+    // 전체 동의를 완성하라!
+    const all = document.querySelector("input[name='all']");
+    const terms = document.querySelectorAll("input[name = 'term']");
+
+    NodeList.prototype.map = Array.prototype.map
+
+    console.log(all, terms)
+    all.addEventListener("click", (e) => {
+        if(e.target.checked){
+            terms.forEach((term) => {
+                term.checked = true;
+            })
+        }else{
+            terms.forEach((term) => {
+                term.checked = false;
+            })
+        }
+    })
+
+    terms.forEach((term) =>{
+        term.addEventListener("click", (e) => {
+            all.checked = terms.map((term) => term.checked).filter((checked) => checked).length === 3
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,25 @@
+※
+▷ 
+▶ 
+addEventListener
+  	- 이벤트를 등록하는 가장 권장되는 방식이다.
+   	이 방식은 하나의 요소의 여러 개의 이벤트 핸들러를 등록할 수 있다.
+
+addEventListener의 사용
+  	 - addEventListener("이벤트명", 콜백함수, option)
+
+자주 사용되는 이벤트의 종류
+   	click - 요소를 클릭했을 때
+   	mouseover -요소에 마우스를 올렸을 때
+   	mouseleave -요소에서 마우스가 떠났을 때
+   	mousedown - 요소를 누르고 마우스를 아직 때기 이전 상태
+   	mouseup - 요소를 누르고 마우슬 땐 상태, 을 때 마우스 위치가 요소 위에 있어야함
+   	mousemove - 마우스가 움직일 때마다
+   	mousewheal - 마우스 휠이 이동되었을 때
+   	scroll - 스크롤의 변화가 있을 때
+   	focus - 활성화 되어있을 때
+   	blur - 포커스에서 벗어났을 때
+   	keypress - 키를 누른 순간
+   	keyup - 키를 누르고 있다가 땐 순간
+   	keydown - 키를 누르고 때기 이전인 순간
+   	change - 품 필드의 속성이 변경되었을 때

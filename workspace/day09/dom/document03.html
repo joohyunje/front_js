@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 선택자를 이용한 선택</title>
+</head>
+<body>
+    <div>
+        <h1 id="title">css 선택자를 이용한 선택</h1>
+        <p class="sub-title">첫 번째 단락이에요!</p>
+        <ul>
+            <li class="odd">치킨</li>
+            <li class="even">피자</li>
+            <li class="odd">맨밥</li>
+            <li class="even">순대</li>
+            <li class="odd">라면</li>
+        </ul>
+    </div>
+</body>
+<script>
+    NodeList.prototype.filter = Array.prototype.filter;
+    const title = document.querySelector("#title");
+    const list = document.querySelectorAll("li");
+    // console.log(title);
+    // console.log(list);
+    list.forEach((li) => {
+        if(li.innerText === "맨밥"){
+            console.log(li);
+        }
+    })
+    // filter()
+    // li태그에 "치킨"이 포함되어 있다면 글자색을 빨간색으로 변경
+
+    const chick = list.filter( li => li.innerText.includes("치킨")).forEach((li) =>{
+        li.style.color = "red";
+        li.innerText = "후라이드 치킨"
+    });
+
+    // 대괄호 접근법으로 styles 정의 후 아래 스타일을 적용
+    // 1) 홀수(odd)의 글자 크기는 22px 로
+    // 2) 짝수(even)의 글자 크기는 14px로 변겅하기
+
+    const styles = {
+        odd : "22px",
+        even : "14px"
+    }
+
+    list.forEach((li) => {
+        li.style.fontSize = styles[li.classList[0]]
+    })
+
+    // list.forEach((li) => {
+    //     if(li.classList[0] === "odd"){
+    //         li.style.fontSize = "22px";
+    //     }
+    //     if(li.classList[0] === "even"){
+    //         li.style.fontSize = "14px";
+    //     }
+    // })
+
+
+</script>
+</html>
